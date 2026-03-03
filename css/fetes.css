@@ -1,0 +1,122 @@
+
+.fetes__table {
+    width: 750px;
+    display: flex;
+    flex-direction : column;
+    justify-content: flex-start;
+    height: 480px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    
+   font-size :0.9rem;
+
+}
+
+
+.fetes__table__entry {
+    position :relative;
+    width: 375px;
+    height : 30px;
+    width: 50%;
+    margin : 0;
+    
+    
+}
+
+.fetes__table__entry__date {
+    top:0;
+    left:0;
+    position:   absolute;
+    height : 30px;
+    width: 70px;
+    background-color:   #9a8d8c;
+    border-bottom: solid  2px white;
+    display : inline-block;
+    color: white;
+    font-weight: bold;
+    padding-left : 10px;
+    line-height: 28px;
+    font-size :0.8rem;
+}
+
+
+
+
+.fetes__table__entry__link {
+    position : absolute;
+    left :70px;
+    border-top: solid  2px #9a8d8c;
+    border-right: solid  4px #9a8d8c;
+    height : 30px;
+    width: 305px;
+    display : inline-block;
+    padding-left : 25px;
+    line-height: 28px;
+   
+}
+
+
+.fetes__table__entry__link a {
+  font-size: 0.9rem;
+   
+}
+
+.fetes__table__entry:nth-child(16) .fetes__table__entry__link {
+    border-bottom: solid  2px #9a8d8c;
+  }
+
+
+
+.fetes__table__entry:last-child .fetes__table__entry__link {
+    border-bottom: solid  2px #9a8d8c;
+  }
+
+  .fetes__submenu {
+	
+	color: rgba(0,0,0,.5);
+   
+    width: 100%;
+    margin: 13px auto 20px auto;
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    padding : 0 1.5rem;
+    font-size : 0.9rem;
+    flex-wrap: wrap;
+}
+.fetes__submenu  a:hover {
+	margin: 0px 3px 0px 3px;
+	font-size: 0.92em;
+
+	font-weight: bolder;
+}
+.fetes__submenu  li {
+    margin : 0 10px;
+    line-height: 20px;;
+}
+
+@media only screen and (max-width: 750px) {
+    .fetes__table {
+        width: 100%;
+        max-width: 400px;
+     
+        height: 930px;
+       
+        
+       font-size :0.8rem;
+    
+    }
+
+    .fetes__table__entry__link {
+        width: 250px;
+        
+    
+    }
+    .fetes__table__entry__link a {
+        font-size :0.8rem;
+    }
+        
+    
+    }
+    

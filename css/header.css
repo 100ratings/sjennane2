@@ -1,0 +1,71 @@
+.header__logo {
+ 
+  margin-left : 10px;
+  }
+
+.navbar__logo {
+width: 8rem;
+height: auto;
+margin: 10px 20px 0 0;
+background-color: white;
+}
+
+.navbar-toggle {
+  padding: 10px 3px !important;
+}
+
+.navbar-toggle .icon-bar {
+  width: 24px !important;
+  height: 10px;
+}
+.navbar-toggler-icon  {
+  width: 2.5rem !important;
+  height:2.5rem !important;
+  
+  padding-bottom :20px !important;
+}
+
+.header__logo img {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+ background-color: white;
+}
+
+.header__fetes__text {
+background-color: #8491c4;
+width: 45%;
+border-radius: 20px 0 0 20px;
+color: white;
+text-align: center;
+height: 40px;
+font-size: 1rem;
+text-transform: uppercase;
+font-weight: bolder;
+line-height: 40px;
+float: left;
+}
+
+.header__fetes__link {
+  border-radius: 0 20px 20px 0;
+  border: 2px solid #8491c4;
+  height: 40px;
+  font-size: 0.9rem;
+  line-height: 36px;
+  text-align: center;
+  width:55%;
+  color: #666666;
+  float: left;
+}
+
+.header__fetes__link a {
+  color: #666666;
+  text-decoration: none;
+}
+.header__fetes__link  a:hover {
+  color: #8491c4;
+}
+
+
+
+ 

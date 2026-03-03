@@ -1,0 +1,164 @@
+.meaning__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom : 1rem;
+    margin-left : 5px;
+    display :inline-block;
+}
+
+.meaning__compose__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom : 1rem;
+    margin-left : 5px;
+    display :inline-block;
+}
+
+.meaning__block {
+
+    margin: 0 auto 20px 5pxpx;
+
+}
+
+.meaning__block__picto {
+    display: inline-block;
+    vertical-align: top;
+    padding-top : 5px;
+    width: 30px;
+    
+}
+
+.meaning__block__picto  img {
+   width: 30px;
+   height: auto;
+    
+}
+.meaning__right {
+    display: inline-block;
+    margin-top : 0;
+    width: calc(95% - 45px);
+    padding-left : 0.5rem;
+}
+
+.meaning__block__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    
+    
+}
+
+.meaning__block__content {
+   
+    margin-bottom: 0.5rem;
+    max-width: 650px;
+
+}
+
+.meaning__title__search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:0;
+    width: 90%;
+
+}
+
+.meaning__notfound {
+    display: inline-block;
+    font-size : 1rem;
+    width: 70%;
+    
+}
+
+.meaning__notfound  p {
+
+    font-weight: bold;
+
+    
+}
+
+.meaning__notfound img {
+    width: 30px;
+    
+    
+}
+
+.meaning__mobile__search__textInput { 
+    height: 40px;
+    line-height: 1.4em;
+    border: none;
+    display: block;
+    margin-left : 20px;
+    color: #9b8d8c;
+    font-size: 1rem;
+    width: 90%;
+    }
+    
+.meaning__mobile__search__searchwindow{
+    
+    border-radius: 15px;
+    width : 300px;
+    height: 45px;
+    border : 2px solid #9B8D8C;
+    position: relative;
+
+    max-width: 600px;
+    display :inline-block;
+    right : 0;
+}
+
+.meaning__mobile__search__searchbuttons {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	position :absolute;
+	top :8px;
+    right: 10px;
+    background-color: white;
+
+
+	border: none;
+
+}
+
+.meaning__mobile__search__searchbuttons img {
+	height :20px;
+	
+
+}
+
+.meaning__search__mobile {
+ 
+    margin-bottom: 40px;
+}
+
+.meaning__vote__selector {
+    width: 100px;
+
+}
+
+.meaning__vote__selector__option {
+
+    padding: 20px;
+}
+ 
+
+
+@media only screen and (max-width: 768px) {
+    .meaning__block__content {
+   
+      
+        font-size: 0.9rem;
+    }
+
+    .meaning__notfound{
+   
+      
+        width: 100%;
+    }
+
+
+    }

@@ -1,0 +1,34 @@
+.department__dropdown__cartridge {
+	height :50px;
+    
+    min-width: 220px;
+    padding-bottom: 20px;
+    margin-left : 20px;
+	border-radius: 18px;
+	border-width: 2px;
+	border-style: solid;
+    border-color: #9B8D8C;
+    display: inline-block;
+}
+
+.department__dropdown__area {
+    padding-left: 15px;
+}
+
+.department__dropdown__area li {
+    padding-bottom : 5px;
+}
+.department__dropdown__button {
+border: none;
+font-size: 1.1rem;
+}
+
+
+@media only screen and (max-width: 700px) {
+    .department__dropdown__button {
+        font-size: 1rem;
+        line-height: 35px;
+    }
+  
+
+
